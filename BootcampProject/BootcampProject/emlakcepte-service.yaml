@@ -1,0 +1,736 @@
+{
+    "openapi": "3.0.1",
+    "info":
+        {
+            "title": "Emlakcepte API",
+            "description": "Main API Information",
+            "version": "1.0",
+        },
+    "servers":
+        [
+            {
+                "url": "http://localhost:9091",
+                "description": "Generated server url",
+            },
+        ],
+    "paths":
+        {
+            "/users":
+                {
+                    "get":
+                        {
+                            "tags": ["user-controller"],
+                            "operationId": "getAll",
+                            "responses":
+                                {
+                                    "200":
+                                        {
+                                            "description": "OK",
+                                            "content":
+                                                {
+                                                    "*/*":
+                                                        {
+                                                            "schema":
+                                                                {
+                                                                    "type": "array",
+                                                                    "items":
+                                                                        {
+                                                                            "$ref": "#/components/schemas/UserResponse",
+                                                                        },
+                                                                },
+                                                        },
+                                                },
+                                        },
+                                },
+                        },
+                    "put":
+                        {
+                            "tags": ["user-controller"],
+                            "operationId": "update",
+                            "requestBody":
+                                {
+                                    "content":
+                                        {
+                                            "application/json":
+                                                {
+                                                    "schema":
+                                                        {
+                                                            "$ref": "#/components/schemas/UserUpdateRequest",
+                                                        },
+                                                },
+                                        },
+                                    "required": true,
+                                },
+                            "responses":
+                                {
+                                    "200":
+                                        {
+                                            "description": "OK",
+                                            "content":
+                                                {
+                                                    "*/*":
+                                                        {
+                                                            "schema":
+                                                                {
+                                                                    "$ref": "#/components/schemas/UserResponse",
+                                                                },
+                                                        },
+                                                },
+                                        },
+                                },
+                        },
+                    "post":
+                        {
+                            "tags": ["user-controller"],
+                            "operationId": "create",
+                            "requestBody":
+                                {
+                                    "content":
+                                        {
+                                            "application/json":
+                                                {
+                                                    "schema":
+                                                        {
+                                                            "$ref": "#/components/schemas/UserRequest",
+                                                        },
+                                                },
+                                        },
+                                    "required": true,
+                                },
+                            "responses":
+                                {
+                                    "200":
+                                        {
+                                            "description": "OK",
+                                            "content":
+                                                {
+                                                    "*/*":
+                                                        {
+                                                            "schema":
+                                                                {
+                                                                    "$ref": "#/components/schemas/UserResponse",
+                                                                },
+                                                        },
+                                                },
+                                        },
+                                },
+                        },
+                },
+            "/realtyes/status":
+                {
+                    "put":
+                        {
+                            "tags": ["realty-controller"],
+                            "operationId": "updateRealtyStatusTypeById",
+                            "parameters":
+                                [
+                                    {
+                                        "name": "realtyStatusType",
+                                        "in": "query",
+                                        "required": true,
+                                        "schema":
+                                            {
+                                                "type": "string",
+                                                "enum":
+                                                    [
+                                                        "ACTIVE",
+                                                        "PASSIVE",
+                                                        "IN_REVIEW",
+                                                    ],
+                                            },
+                                    },
+                                ],
+                            "requestBody":
+                                {
+                                    "content":
+                                        {
+                                            "application/json":
+                                                {
+                                                    "schema":
+                                                        {
+                                                            "$ref": "#/components/schemas/Realty",
+                                                        },
+                                                },
+                                        },
+                                    "required": true,
+                                },
+                            "responses":
+                                {
+                                    "200":
+                                        {
+                                            "description": "OK",
+                                            "content":
+                                                {
+                                                    "*/*":
+                                                        {
+                                                            "schema":
+                                                                {
+                                                                    "$ref": "#/components/schemas/Realty",
+                                                                },
+                                                        },
+                                                },
+                                        },
+                                },
+                        },
+                },
+            "/products/{productId}/payment":
+                {
+                    "put":
+                        {
+                            "tags": ["product-controller"],
+                            "operationId": "updatePaymentStatusType",
+                            "parameters":
+                                [
+                                    {
+                                        "name": "productId",
+                                        "in": "path",
+                                        "required": true,
+                                        "schema":
+                                            {
+                                                "type": "integer",
+                                                "format": "int64",
+                                            },
+                                    },
+                                ],
+                            "requestBody":
+                                {
+                                    "content":
+                                        {
+                                            "application/json":
+                                                {
+                                                    "schema":
+                                                        {
+                                                            "type": "string",
+                                                            "enum":
+                                                                [
+                                                                    "WAITING",
+                                                                    "FAILED",
+                                                                    "COMPLETED",
+                                                                ],
+                                                        },
+                                                },
+                                        },
+                                    "required": true,
+                                },
+                            "responses":
+                                {
+                                    "200":
+                                        {
+                                            "description": "OK",
+                                            "content":
+                                                {
+                                                    "*/*":
+                                                        {
+                                                            "schema":
+                                                                {
+                                                                    "$ref": "#/components/schemas/Product",
+                                                                },
+                                                        },
+                                                },
+                                        },
+                                },
+                        },
+                },
+            "/realtyes":
+                {
+                    "get":
+                        {
+                            "tags": ["realty-controller"],
+                            "operationId": "getAll_1",
+                            "responses":
+                                {
+                                    "200":
+                                        {
+                                            "description": "OK",
+                                            "content":
+                                                {
+                                                    "*/*":
+                                                        {
+                                                            "schema":
+                                                                {
+                                                                    "type": "array",
+                                                                    "items":
+                                                                        {
+                                                                            "$ref": "#/components/schemas/Realty",
+                                                                        },
+                                                                },
+                                                        },
+                                                },
+                                        },
+                                },
+                        },
+                    "post":
+                        {
+                            "tags": ["realty-controller"],
+                            "operationId": "create_1",
+                            "requestBody":
+                                {
+                                    "content":
+                                        {
+                                            "application/json":
+                                                {
+                                                    "schema":
+                                                        {
+                                                            "$ref": "#/components/schemas/RealtyRequest",
+                                                        },
+                                                },
+                                        },
+                                    "required": true,
+                                },
+                            "responses":
+                                {
+                                    "200":
+                                        {
+                                            "description": "OK",
+                                            "content":
+                                                {
+                                                    "*/*":
+                                                        {
+                                                            "schema":
+                                                                {
+                                                                    "$ref": "#/components/schemas/Realty",
+                                                                },
+                                                        },
+                                                },
+                                        },
+                                },
+                        },
+                },
+            "/products":
+                {
+                    "get":
+                        {
+                            "tags": ["product-controller"],
+                            "operationId": "getAll_2",
+                            "responses":
+                                {
+                                    "200":
+                                        {
+                                            "description": "OK",
+                                            "content":
+                                                {
+                                                    "*/*":
+                                                        {
+                                                            "schema":
+                                                                {
+                                                                    "type": "array",
+                                                                    "items":
+                                                                        {
+                                                                            "$ref": "#/components/schemas/Product",
+                                                                        },
+                                                                },
+                                                        },
+                                                },
+                                        },
+                                },
+                        },
+                    "post":
+                        {
+                            "tags": ["product-controller"],
+                            "operationId": "purchase",
+                            "requestBody":
+                                {
+                                    "content":
+                                        {
+                                            "application/json":
+                                                {
+                                                    "schema":
+                                                        {
+                                                            "$ref": "#/components/schemas/ProductRequest",
+                                                        },
+                                                },
+                                        },
+                                    "required": true,
+                                },
+                            "responses":
+                                {
+                                    "200":
+                                        {
+                                            "description": "OK",
+                                            "content":
+                                                {
+                                                    "*/*":
+                                                        {
+                                                            "schema":
+                                                                {
+                                                                    "$ref": "#/components/schemas/Product",
+                                                                },
+                                                        },
+                                                },
+                                        },
+                                },
+                        },
+                },
+            "/users/{email}":
+                {
+                    "get":
+                        {
+                            "tags": ["user-controller"],
+                            "operationId": "getByEmail",
+                            "parameters":
+                                [
+                                    {
+                                        "name": "email",
+                                        "in": "path",
+                                        "required": true,
+                                        "schema": { "type": "string" },
+                                    },
+                                ],
+                            "responses":
+                                {
+                                    "200":
+                                        {
+                                            "description": "OK",
+                                            "content":
+                                                {
+                                                    "*/*":
+                                                        {
+                                                            "schema":
+                                                                {
+                                                                    "$ref": "#/components/schemas/UserResponse",
+                                                                },
+                                                        },
+                                                },
+                                        },
+                                },
+                        },
+                },
+            "/realtyes/{id}":
+                {
+                    "get":
+                        {
+                            "tags": ["realty-controller"],
+                            "operationId": "getAllByUserId",
+                            "parameters":
+                                [
+                                    {
+                                        "name": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "schema":
+                                            {
+                                                "type": "integer",
+                                                "format": "int32",
+                                            },
+                                    },
+                                ],
+                            "responses":
+                                {
+                                    "200":
+                                        {
+                                            "description": "OK",
+                                            "content":
+                                                {
+                                                    "*/*":
+                                                        {
+                                                            "schema":
+                                                                {
+                                                                    "type": "array",
+                                                                    "items":
+                                                                        {
+                                                                            "$ref": "#/components/schemas/Realty",
+                                                                        },
+                                                                },
+                                                        },
+                                                },
+                                        },
+                                },
+                        },
+                },
+            "/realtyes/status/active":
+                {
+                    "get":
+                        {
+                            "tags": ["realty-controller"],
+                            "operationId": "getAllActiveRealtyes",
+                            "responses":
+                                {
+                                    "200":
+                                        {
+                                            "description": "OK",
+                                            "content":
+                                                {
+                                                    "*/*":
+                                                        {
+                                                            "schema":
+                                                                {
+                                                                    "type": "array",
+                                                                    "items":
+                                                                        {
+                                                                            "$ref": "#/components/schemas/Realty",
+                                                                        },
+                                                                },
+                                                        },
+                                                },
+                                        },
+                                },
+                        },
+                },
+            "/products/{id}":
+                {
+                    "get":
+                        {
+                            "tags": ["product-controller"],
+                            "operationId": "getAllByUserId_1",
+                            "parameters":
+                                [
+                                    {
+                                        "name": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "schema":
+                                            {
+                                                "type": "integer",
+                                                "format": "int32",
+                                            },
+                                    },
+                                ],
+                            "responses":
+                                {
+                                    "200":
+                                        {
+                                            "description": "OK",
+                                            "content":
+                                                {
+                                                    "*/*":
+                                                        {
+                                                            "schema":
+                                                                {
+                                                                    "type": "array",
+                                                                    "items":
+                                                                        {
+                                                                            "$ref": "#/components/schemas/Product",
+                                                                        },
+                                                                },
+                                                        },
+                                                },
+                                        },
+                                },
+                        },
+                },
+        },
+    "components":
+        {
+            "schemas":
+                {
+                    "UserUpdateRequest":
+                        {
+                            "type": "object",
+                            "properties":
+                                {
+                                    "name": { "type": "string" },
+                                    "email": { "type": "string" },
+                                },
+                        },
+                    "UserResponse":
+                        {
+                            "type": "object",
+                            "properties":
+                                {
+                                    "id":
+                                        {
+                                            "type": "integer",
+                                            "format": "int32",
+                                        },
+                                    "name": { "type": "string" },
+                                    "email": { "type": "string" },
+                                    "type":
+                                        {
+                                            "type": "string",
+                                            "enum": ["INDIVIDUAL", "CORPARETE"],
+                                        },
+                                },
+                        },
+                    "Product":
+                        {
+                            "type": "object",
+                            "properties":
+                                {
+                                    "id":
+                                        {
+                                            "type": "integer",
+                                            "format": "int32",
+                                        },
+                                    "user":
+                                        { "$ref": "#/components/schemas/User" },
+                                    "name": { "type": "string" },
+                                    "realtyLimit":
+                                        {
+                                            "type": "integer",
+                                            "format": "int32",
+                                        },
+                                    "validityPeriod":
+                                        {
+                                            "type": "integer",
+                                            "format": "int32",
+                                        },
+                                    "price":
+                                        {
+                                            "type": "number",
+                                            "format": "double",
+                                        },
+                                    "paymentStatusType":
+                                        {
+                                            "type": "string",
+                                            "writeOnly": true,
+                                            "enum":
+                                                [
+                                                    "WAITING",
+                                                    "FAILED",
+                                                    "COMPLETED",
+                                                ],
+                                        },
+                                    "paymentType":
+                                        {
+                                            "type": "string",
+                                            "enum":
+                                                [
+                                                    "WAITING",
+                                                    "FAILED",
+                                                    "COMPLETED",
+                                                ],
+                                        },
+                                },
+                        },
+                    "Realty":
+                        {
+                            "type": "object",
+                            "properties":
+                                {
+                                    "id":
+                                        {
+                                            "type": "integer",
+                                            "format": "int32",
+                                        },
+                                    "no":
+                                        {
+                                            "type": "integer",
+                                            "format": "int32",
+                                        },
+                                    "title": { "type": "string" },
+                                    "createDate":
+                                        {
+                                            "type": "string",
+                                            "format": "date-time",
+                                        },
+                                    "user":
+                                        { "$ref": "#/components/schemas/User" },
+                                    "status":
+                                        {
+                                            "type": "string",
+                                            "enum":
+                                                [
+                                                    "ACTIVE",
+                                                    "PASSIVE",
+                                                    "IN_REVIEW",
+                                                ],
+                                        },
+                                    "province": { "type": "string" },
+                                },
+                        },
+                    "User":
+                        {
+                            "type": "object",
+                            "properties":
+                                {
+                                    "id":
+                                        {
+                                            "type": "integer",
+                                            "format": "int32",
+                                        },
+                                    "name": { "type": "string" },
+                                    "email": { "type": "string" },
+                                    "password": { "type": "string" },
+                                    "type":
+                                        {
+                                            "type": "string",
+                                            "enum": ["INDIVIDUAL", "CORPARETE"],
+                                        },
+                                    "realtyList":
+                                        {
+                                            "type": "array",
+                                            "items":
+                                                {
+                                                    "$ref": "#/components/schemas/Realty",
+                                                },
+                                        },
+                                    "productList":
+                                        {
+                                            "type": "array",
+                                            "items":
+                                                {
+                                                    "$ref": "#/components/schemas/Product",
+                                                },
+                                        },
+                                    "createDate":
+                                        {
+                                            "type": "string",
+                                            "format": "date-time",
+                                        },
+                                },
+                        },
+                    "UserRequest":
+                        {
+                            "type": "object",
+                            "properties":
+                                {
+                                    "name": { "type": "string" },
+                                    "email": { "type": "string" },
+                                    "password": { "type": "string" },
+                                    "type":
+                                        {
+                                            "type": "string",
+                                            "enum": ["INDIVIDUAL", "CORPARETE"],
+                                        },
+                                },
+                        },
+                    "RealtyRequest":
+                        {
+                            "type": "object",
+                            "properties":
+                                {
+                                    "no":
+                                        {
+                                            "type": "integer",
+                                            "format": "int32",
+                                        },
+                                    "title": { "type": "string" },
+                                    "province": { "type": "string" },
+                                    "userId":
+                                        {
+                                            "type": "integer",
+                                            "format": "int32",
+                                        },
+                                },
+                        },
+                    "ProductRequest":
+                        {
+                            "type": "object",
+                            "properties":
+                                {
+                                    "userId":
+                                        {
+                                            "type": "integer",
+                                            "format": "int32",
+                                        },
+                                    "name": { "type": "string" },
+                                    "realtyLimit":
+                                        {
+                                            "type": "integer",
+                                            "format": "int32",
+                                        },
+                                    "validityPeriod":
+                                        {
+                                            "type": "integer",
+                                            "format": "int32",
+                                        },
+                                    "price":
+                                        {
+                                            "type": "number",
+                                            "format": "double",
+                                        },
+                                },
+                        },
+                },
+        },
+}

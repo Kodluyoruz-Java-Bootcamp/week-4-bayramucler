@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/BootcampProjectGroup.iml" filepath="$PROJECT_DIR$/.idea/BootcampProjectGroup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BootcampProject/emlakcepte-banner-service/emlakcepte-banner-service.iml" filepath="$PROJECT_DIR$/BootcampProject/emlakcepte-banner-service/emlakcepte-banner-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BootcampProject/emlakcepte-eurake-server/emlakcepte-eureka-server.iml" filepath="$PROJECT_DIR$/BootcampProject/emlakcepte-eurake-server/emlakcepte-eureka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BootcampProject/emlakcepte-gateway/emlakcepte-gateway.iml" filepath="$PROJECT_DIR$/BootcampProject/emlakcepte-gateway/emlakcepte-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BootcampProject/emlakcepte-notification-service/emlakcepte-notification-service.iml" filepath="$PROJECT_DIR$/BootcampProject/emlakcepte-notification-service/emlakcepte-notification-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BootcampProject/emlakcepte-payment-service/emlakcepte-payment-service.iml" filepath="$PROJECT_DIR$/BootcampProject/emlakcepte-payment-service/emlakcepte-payment-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../emlakcepte-realtystatus-service/emlakcepte-realtystatus-service.iml" filepath="$PROJECT_DIR$/../emlakcepte-realtystatus-service/emlakcepte-realtystatus-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BootcampProject/emlakcepte-service/emlakcepte-service.iml" filepath="$PROJECT_DIR$/BootcampProject/emlakcepte-service/emlakcepte-service.iml" />
+    </modules>
+  </component>
+</project>
